@@ -17,8 +17,8 @@ function Navegation() {
         <FiAlignJustify fontSize={20}></FiAlignJustify>
       </Button>
 
-      <Offcanvas show={show} onHide={handleClose} className='bg-black text-white'>
-        <Offcanvas.Header closeButton>
+      <Offcanvas show={show} onHide={handleClose} className='bg-black text-white' >
+        <Offcanvas.Header closeButton closeVariant={'white'}>
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
