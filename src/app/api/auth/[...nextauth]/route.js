@@ -16,7 +16,7 @@ const handler = NextAuth({
         
         try
         {
-          const res = await fetch('http://localhost:3000/api/auth/compare', {
+          const res = await fetch('https://word-games-seven.vercel.app/api/auth/compare', {
             method: 'POST',
             body: JSON.stringify(credentials),
             headers: { "Content-Type": "application/json" }
