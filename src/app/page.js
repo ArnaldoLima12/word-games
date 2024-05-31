@@ -7,8 +7,7 @@ import Navegation from '@/components/Navegation'
 export default function Home() {
   return (
     <Container>
-      <Header></Header>
-     
+      <Header auth={false}/>
       <main></main>
     </Container>
   )

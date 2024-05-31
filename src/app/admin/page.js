@@ -1,21 +1,37 @@
-import ButtonLogout from "@/components/ButtonLogout";
+import Link from "next/link";
 import Container from "@/components/Container";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import { BsController } from "react-icons/bs";
+import Header from "@/components/Header";
+import ProtectedRouter from "@/components/ProtectedRouter";
 
 export default async function Admin()
 { 
-  const session = await getServerSession();
   
-  if(!session)
-  {
-    redirect('/')
-  }
 
   return(
-    <Container>
-      <h1>Olá {session?.user?.email}</h1>
-      <ButtonLogout></ButtonLogout>
-    </Container>
+    
+    <ProtectedRouter>
+       <Container>
+        <Header auth={true}/>
+
+        <main className="mx-auto mt-20 gap-3 flex items-center justify-center max-w-3xl">
+          <div className="cards">
+              <Link href={'/admin/newgame'}>
+                <BsController fontSize={50}/>
+                <p>Novo Jogo</p>
+              </Link>
+          </div>
+
+          <div className="cards">
+
+          </div>
+
+          <div className="cards">
+
+          </div>
+        </main>
+      </Container>
+    </ProtectedRouter>
+   
   )
 }
