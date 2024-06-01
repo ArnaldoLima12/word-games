@@ -79,7 +79,7 @@ export default function FormNewGame() {
                 <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="plataforma" className="text-sm font-medium text-gray-900 block mb-2">Platafoma</label>
                     <select name="plataforma" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
-                        <option selected></option>
+                        <option defaultValue={''}></option>
                         <option value={'PS2'}>PS2</option>
                         <option value={'PS3'}>PS3</option>
                     </select>

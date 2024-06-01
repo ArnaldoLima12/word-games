@@ -12,15 +12,15 @@ export default function Page() {
                 <Header auth={true} />
 
                 <main>
-                    <div class="bg-white rounded-lg shadow  m-10">
+                    <div className="bg-white rounded-lg shadow  m-10">
 
-                        <div class="flex items-start justify-between p-2 border-b rounded-t">
-                            <h3 class="text-xl font-semibold">
+                        <div className="flex items-start justify-between p-2 border-b rounded-t">
+                            <h3 className="text-xl font-semibold">
                                 Novo Jogo
                             </h3>
                         </div>
 
-                        <div class="p-6 space-y-6">
+                        <div className="p-6 space-y-6">
                            <FormNewGame></FormNewGame>
                         </div>
                       
