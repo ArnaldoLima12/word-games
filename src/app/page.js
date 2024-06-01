@@ -2,7 +2,6 @@ import Container from '@/components/Container'
 import Header from '@/components/Header'
 import ListGame from '@/components/ListGame';
 
-
 export default async function Home() {
 
   const loadGame = async e =>
