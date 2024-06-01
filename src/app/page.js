@@ -1,5 +1,3 @@
-'use server'
-
 import Container from '@/components/Container'
 import Header from '@/components/Header'
 import ListGame from '@/components/ListGame';
