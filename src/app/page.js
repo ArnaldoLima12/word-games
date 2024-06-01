@@ -14,6 +14,7 @@ export default async function Home() {
   
           if (!res.ok) {
               console.log('Failed to fetch data');
+              return null;
           }
   
           let result = await res.json();
