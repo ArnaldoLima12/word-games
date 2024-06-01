@@ -1,7 +1,7 @@
 import Container from '@/components/Container'
 import Header from '@/components/Header'
 import ListGame from '@/components/ListGame';
-import Navegation from '@/components/Navegation'
+
 
 export default async function Home() {
 
