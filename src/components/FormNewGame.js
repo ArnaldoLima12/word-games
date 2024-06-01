@@ -1,31 +1,43 @@
 'use client'
 
+import { useState, useRef } from "react";
+
 export default function FormNewGame() {   
 
+    const [resultado, setResultado] = useState(null);
+    const formRef = useRef(null);
+
     const submit = async (e) => {
+        
         e.preventDefault();
 
         const form = new FormData(e.currentTarget);
 
-        const data = {
-            titulo: form.get('titulo'),
-            categoria: form.get('categoria'),
-            id: form.get('id'),
-            download: form.get('download'),
-            descricao: form.get('descricao'),
-            capa: await convertToBase64(form.get('capa')) // Converte a imagem para base64
-        }
-
         let res = await fetch('/api/create', {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify({
+                titulo: form.get('titulo'),
+                categoria: form.get('categoria'),
+                id: form.get('id'),
+                download: form.get('download'),
+                descricao: form.get('descricao'),
+                iso: form.get('iso'),
+                plataforma: form.get('plataforma'),
+                capa: await convertToBase64(form.get('capa'))
+            }),
             headers: { "Content-Type": "application/json" }
         });
 
+        const data = await res.json();
+
         if (res.ok) {
-            console.log('Form submitted successfully');
+
+            setResultado({status: true, message: data.message});
+            formRef.current.reset();
+
         } else {
-            console.log('Error submitting form');
+            
+            setResultado({status: false, message: data.message})
         }
     }
 
@@ -47,7 +59,7 @@ export default function FormNewGame() {
     
 
     return (
-        <form onSubmit={submit} encType="multipart/form-data">
+        <form ref={formRef} onSubmit={submit} encType="multipart/form-data">
             <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="titulo" className="text-sm font-medium text-gray-900 block mb-2">Titulo</label>
@@ -60,12 +72,21 @@ export default function FormNewGame() {
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="brand" className="text-sm font-medium text-gray-900 block mb-2">ISO ID</label>
-                    <input type="text" name="id" id="brand" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="BLES[0000]" required />
+                    <label htmlFor="id" className="text-sm font-medium text-gray-900 block mb-2">ISO ID</label>
+                    <input type="text" name="iso" id="iso" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="BLES[0000]" required />
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="price" className="text-sm font-medium text-gray-900 block mb-2">Download</label>
+                    <label htmlFor="plataforma" className="text-sm font-medium text-gray-900 block mb-2">Platafoma</label>
+                    <select name="plataforma" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                        <option selected></option>
+                        <option value={'PS2'}>PS2</option>
+                        <option value={'PS3'}>PS3</option>
+                    </select>
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                    <label htmlFor="download" className="text-sm font-medium text-gray-900 block mb-2">Download</label>
                     <input type="text" name="download" id="download" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="" required />
                 </div>
 
@@ -79,10 +100,16 @@ export default function FormNewGame() {
                     <input type="file" name="capa" id="capa" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="" required />
                 </div>
                 
-                <div className="col-span-6 sm:col-span-3">
+                <div className="col-span-6 sm:col-span-3 flex items-center justify-end">
                     <button type="submit" className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Save all</button>
                 </div>
             </div>
+
+            {resultado && (
+                <div className={`mt-4 p-4 rounded ${resultado.status ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}>
+                    {resultado.message}
+                </div>
+            )}
         </form>
     );
 }

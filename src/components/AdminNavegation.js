@@ -3,6 +3,7 @@
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import ButtonLogout from './ButtonLogout';
+import Link from 'next/link';
 import { FiAlignJustify } from "react-icons/fi";
 import { useState } from 'react';
 
@@ -22,7 +23,9 @@ function AdminNavegation() {
         <Offcanvas.Header closeButton closeVariant={'white'}>
           <Offcanvas.Title>Menu</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
+        <Offcanvas.Body className='flex flex-col gap-2'>
+            <Link className='text-white bg-blue-400 p-2 text-center rounded-md no-underline' href={'/admin'}>Painel</Link>
+            <Link className='text-white bg-blue-400 p-2 text-center rounded-md no-underline' href={'/admin/newgame'}>Novo Jogo</Link>
             <ButtonLogout/>
         </Offcanvas.Body>
       </Offcanvas>
