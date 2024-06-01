@@ -4,18 +4,28 @@ import ListGame from '@/components/ListGame';
 
 export default async function Home() {
 
-  async function loadGame()
+  try
+  {  
+    
+    async function loadGame() {
+      
+      let res = await fetch('https://word-games-seven.vercel.app/api/list/all', {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" }
+      });
+  
+      let result = await res.json();
+      return result;
+    }
+    
+    const data = await loadGame();
+  }
+  catch(error)
   {
-    let res = await fetch('https://word-games-seven.vercel.app/api/list/all', {
-      method: 'GET',
-      headers: { "Content-Type": "application/json" }
-    });
-
-    let result = await res.json();
-    return result;
+    console.log('Falha na fecth')
   }
   
-  const data = await loadGame();
+ 
 
   return (
     <Container>
