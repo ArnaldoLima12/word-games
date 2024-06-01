@@ -6,13 +6,14 @@ export default async function Home() {
 
     async function loadGame() {
       try {
+
           let res = await fetch('https://word-games-seven.vercel.app/api/list/all', {
               method: 'GET',
               headers: { "Content-Type": "application/json" }
           });
   
           if (!res.ok) {
-              throw new Error('Failed to fetch data');
+              console.log('Failed to fetch data');
           }
   
           let result = await res.json();
