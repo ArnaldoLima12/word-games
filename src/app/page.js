@@ -7,7 +7,7 @@ export default async function Home() {
 
   const loadGame = async e =>
   {
-    let res = await fetch('http://localhost:3000/api/list/all');
+    let res = await fetch('https://word-games-seven.vercel.app/api/list/all');
     let result = await res.json();
     return result;
   }
