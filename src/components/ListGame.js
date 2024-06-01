@@ -4,8 +4,9 @@ import Link from "next/link";
 export default function ListGame({ games }) {
 
     return (
+       
         <main className="flex gap-2 flex-grow p-3 flex-wrap border border-white justify-center">
-            {games.map( game => (
+            {games ? (games.map( game => (
               <div key={game.id} className="relative h-fit flex max-w-[22rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg ">
                 
                 <div className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40 flex justify-center">
@@ -31,7 +32,8 @@ export default function ListGame({ games }) {
                     </Link>
                 </div>
             </div> 
-            ))}
+            ))) : (<h2>Indisponivel</h2>)}
+            
         </main>
     )
 }
