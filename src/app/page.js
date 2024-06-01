@@ -8,7 +8,7 @@ export default async function Home() {
   {  
     
     async function loadGame() {
-      
+
       let res = await fetch('https://word-games-seven.vercel.app/api/list/all', {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
@@ -21,7 +21,7 @@ export default async function Home() {
     const data = await loadGame();
   }
   catch(error)
-  {
+  { 
     console.log('Falha na fecth')
   }
   
@@ -30,9 +30,7 @@ export default async function Home() {
   return (
     <Container>
       <Header auth={false}/>
-      <ListGame games={data.games}>
-
-      </ListGame>
+      {data && (<ListGame games={data.games}></ListGame>)}
     </Container>
   )
 }
