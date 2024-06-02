@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import ListGame from '@/components/ListGame';
 
 export default async function Home() {
+  
   async function loadGame() {
     try {
 
