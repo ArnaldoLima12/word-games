@@ -5,7 +5,7 @@ import ListGame from '@/components/ListGame';
 export default async function Home() {
   
   async function loadGame() {
-    
+
     try {
 
       let res = await fetch('https://word-games-seven.vercel.app/api/list/all', {
@@ -29,17 +29,12 @@ export default async function Home() {
     }
   }
 
-  const data = await loadGame();
-  
+  const data = await loadGame();  
 
   return (
     <Container>
       <Header auth={false} />
-      {data ? (
-        <ListGame games={data.games} />
-      ) : (
-        <p>No games available.</p>
-      )}
+      {data ? ( <ListGame games={data.games}/> ) : ( <p className='text-white text-center mt-44'>Falha ao tentar carregar informações.</p>)}
     </Container>
   );
 }
