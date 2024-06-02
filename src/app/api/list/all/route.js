@@ -8,17 +8,16 @@ export async function listAll() {
     {
         let query = 'SELECT * FROM games';
         const result = await connect.query(query);
-        return NextResponse.json({games: result.rows})
+        
+        return NextResponse.json({games: result.rows}, {status: 200});
     }
     catch(error)
     {
-        return NextResponse.json({erro: error});
+        return NextResponse.json({erro: error}, { status: 400 });
     }
-    
-
   
 
 }
 
 
-export {listAll as GET}
+export {listAll as GET, listAll as POST}

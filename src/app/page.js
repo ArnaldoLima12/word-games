@@ -5,6 +5,7 @@ import ListGame from '@/components/ListGame';
 export default async function Home() {
   
   async function loadGame() {
+    
     try {
 
       let res = await fetch('https://word-games-seven.vercel.app/api/list/all', {
