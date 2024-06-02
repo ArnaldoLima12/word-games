@@ -36,7 +36,7 @@ export default async function Game({ params }) {
       <main>
        
        {jogo.map((gm => (
-        <div key={gm.id} className='flex gap-2 p-2'>
+        <div key={gm.id} className='flex gap-2 p-2 max-sm:flex-col'>
           <Image src={gm.capa} height={300} width={300}></Image>
           <div className='flex text-white flex-grow flex-col gap-2 p-2'>
             <h2 className=' tracking-wide'>{gm.titulo}</h2>
