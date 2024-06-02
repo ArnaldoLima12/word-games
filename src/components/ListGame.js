@@ -22,7 +22,7 @@ export default function ListGame({ games }) {
                     
                     </div>
                     <p className="block font-sans text-sm antialiased font-light leading-relaxed text-gray-700">
-                       {game.descricao} 
+                       {game.minedescricao} 
                     </p>
                 </div>
 

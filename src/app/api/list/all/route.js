@@ -6,7 +6,7 @@ export async function listAll(request) {
         const { searchParams } = new URL(request.url);
         let page = parseInt(searchParams.get('page') || '1', 10);
         if (page < 1) page = 1;
-        let limit = parseInt(searchParams.get('limit') || '9', 10);
+        let limit = parseInt(searchParams.get('limit') || '9', 9);
         if (limit < 1) limit = 9;
         const offset = (page - 1) * limit;
         console.log(offset);
@@ -31,7 +31,6 @@ export async function listAll(request) {
 
         // Execute a consulta para obter os jogos
         const result = await connect.query(query, queryParams);
-        console.log(result);
 
         // Se a pesquisa estiver sendo realizada, precisamos contar o número total de resultados
         let totalGames;

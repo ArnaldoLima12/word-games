@@ -45,7 +45,6 @@ export default async function Home({ searchParams }) {
 
 
   let data = await loadGame(page, limit, item);
-  console.log(data);
 
   return (
     <Container>
