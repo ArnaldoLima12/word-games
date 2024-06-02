@@ -3,6 +3,11 @@ import Header from '@/components/Header';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { TbCategory } from "react-icons/tb";
+import { LuGamepad } from "react-icons/lu";
+import { FaFile } from "react-icons/fa6";
+import { MdFileDownload } from "react-icons/md";
+
 
 export default async function Game({ params }) { 
   
@@ -31,14 +36,18 @@ export default async function Game({ params }) {
       <main>
        
        {jogo.map((gm => (
-        <div key={gm.id} className='border border-white flex gap-2 p-2'>
-          <Image src={gm.capa} height={350} width={350}></Image>
-          <div className='flex border border-red-500 text-white flex-grow flex-col gap-2 p-2'>
-            <h2>{gm.titulo}</h2>
+        <div key={gm.id} className='flex gap-2 p-2'>
+          <Image src={gm.capa} height={300} width={300}></Image>
+          <div className='flex text-white flex-grow flex-col gap-2 p-2'>
+            <h2 className=' tracking-wide'>{gm.titulo}</h2>
             <p>{gm.descricao}</p>
-            <p>Platafoma: {gm.plataforma}</p>
-            <p>Categoria: {gm.categoria}</p>
-            <Link className='p-2 bg-green-500 rounded-md no-underline text-white w-32 text-center' href={gm.download}>Download</Link>
+            <div className='flex flex-col gap-1'>
+              <p className='m-0 flex items-center gap-1'> <LuGamepad fontSize={20} color='green'/> Platafoma: {gm.plataforma}</p>
+              <p className='m-0 flex items-center gap-1'> <TbCategory fontSize={20} color='green'/> Categoria: {gm.categoria}</p>
+              <p className='m-0 flex items-center gap-1'> <MdFileDownload fontSize={20} color='green'/> Tamanho: {gm.tamanho}GB</p>
+              <p className='m-0 flex items-center gap-1'> <FaFile fontSize={20} color='green'/> Formato: {gm.formato}</p>
+            </div>
+            <Link className='p-2 mt-4 bg-green-500 rounded-md no-underline text-white w-32 text-center' href={gm.download}>Download</Link>
           </div>
         </div>
        )))}

@@ -5,9 +5,9 @@ export async function Create(req) {
     
     try {
 
-        const { titulo, descricao, minedescricao, download, categoria, capa, iso, plataforma } = await req.json();
+        const { titulo, descricao, formato, download, categoria, capa, iso, plataforma, tamanho } = await req.json();
 
-        if (titulo && descricao && download && categoria && iso && plataforma && capa && minedescricao) {
+        if (titulo && descricao && download && categoria && iso && plataforma && capa && formato && tamanho) {
 
 
             let res = await fetch(process.env.IMG_URL_UPLOAD, {
@@ -19,8 +19,8 @@ export async function Create(req) {
             let img = photo.data.url;
        
 
-            let query = `INSERT INTO games (titulo, descricao, download, categoria, capa, iso, plataforma, minedescricao) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
-            const values = [titulo, descricao, download, categoria, img, iso, plataforma, minedescricao];
+            let query = `INSERT INTO games (titulo, descricao, download, categoria, capa, iso, plataforma, formato, tamanho) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`;
+            const values = [titulo, descricao, download, categoria, img, iso, plataforma, formato, tamanho];
             const result = await connect.query(query, values);
 
             if (result.rows.length > 0) {

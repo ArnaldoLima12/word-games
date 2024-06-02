@@ -14,7 +14,7 @@ export default async function Admin()
        <Container>
         <Header auth={true}/>
 
-        <main className="mx-auto mt-20 gap-3 flex items-center justify-center max-w-3xl">
+        <main className="mx-auto mt-20 gap-3 flex items-center justify-center max-w-3xl w-full flex-wrap">
           <div className="cards">
               <Link href={'/admin/newgame'}>
                 <BsController fontSize={50}/>

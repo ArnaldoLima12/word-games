@@ -21,9 +21,10 @@ export default function FormNewGame() {
                 id: form.get('id'),
                 download: form.get('download'),
                 descricao: form.get('descricao'),
-                minedescricao: form.get('minedescricao'),
+                formato: form.get('formato'),
                 iso: form.get('iso'),
                 plataforma: form.get('plataforma'),
+                tamanho: form.get('tamanho'),
                 capa: await convertToBase64(form.get('capa'))
             }),
             headers: { "Content-Type": "application/json" }
@@ -78,6 +79,11 @@ export default function FormNewGame() {
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
+                    <label htmlFor="tamanho" className="text-sm font-medium text-gray-900 block mb-2">Tamanho</label>
+                    <input type="text" name="tamanho" id="tamanho" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="21" required />
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="plataforma" className="text-sm font-medium text-gray-900 block mb-2">Platafoma</label>
                     <select name="plataforma" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                         <option defaultValue={''}></option>
@@ -92,8 +98,8 @@ export default function FormNewGame() {
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="minedescricao" className="text-sm font-medium text-gray-900 block mb-2">Minedescrição</label>
-                    <input type="text" name="minedescricao" id="minedescricao" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="" required />
+                    <label htmlFor="formato" className="text-sm font-medium text-gray-900 block mb-2">Formato</label>
+                    <input type="text" name="formato" id="formato" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="" required />
                 </div>
 
                 <div className="col-span-full">
