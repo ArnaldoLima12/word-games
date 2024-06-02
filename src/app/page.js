@@ -13,7 +13,7 @@ export default async function Home({ searchParams }) {
   async function loadGame(page, limit) {
 
     try {
-      const res = await fetch(`http://localhost:3000/api/list/all?page=${page}&limit=${limit}`, {
+      const res = await fetch(`https://platinum-games.vercel.app/api/list/all?page=${page}&limit=${limit}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
       });
