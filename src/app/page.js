@@ -1,16 +1,19 @@
 import Container from '@/components/Container';
 import Header from '@/components/Header';
 import ListGame from '@/components/ListGame';
+import Pagination from '@/components/Pagination';
 
 export const fetchCache = 'force-no-store';
 
-export default async function Home() { 
+export default async function Home({ searchParams }) { 
 
-  async function loadGame() {
+  const page = parseInt(searchParams?.page || 1);
+  const limit = parseInt(searchParams?.limit || 10);
+
+  async function loadGame(page, limit) {
 
     try {
-
-      let res = await fetch('https://word-games-seven.vercel.app/api/list/all', {
+      const res = await fetch(`http://localhost:3000/api/list/all?page=${page}&limit=${limit}`, {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
       });
@@ -20,23 +23,29 @@ export default async function Home() {
         return null;
       }
 
-      let result = await res.json();
+      const result = await res.json();
       return result;
-
     } 
-    catch (error) 
-    {
+    catch (error) {
       console.error('Error fetching data:', error);
       return null;
     }
   }
 
-  const data = await loadGame();  
+  const data = await loadGame(page, limit);  
+  console.log(data);
 
   return (
     <Container>
       <Header auth={false} />
-      {data ? ( <ListGame games={data.games}/> ) : ( <p className='text-white text-center mt-44'>Falha ao tentar carregar informações.</p>)}
+      {data ? (
+        <>
+          <ListGame games={data.games} />
+          <Pagination page={data.page} totalPages={data.totalPages} items={data.totalGames} limit={data.limit}/>
+        </>
+      ) : (
+        <p className='text-white text-center mt-44'>Falha ao tentar carregar informações.</p>
+      )}
     </Container>
   );
 }

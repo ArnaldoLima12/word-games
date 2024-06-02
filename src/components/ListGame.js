@@ -4,8 +4,6 @@ import Link from "next/link";
 export default function ListGame({ games }) {
 
 
-    console.log(games)
-    
     return (
        
         <main className="flex gap-2 flex-grow p-3 flex-wrap justify-center">
