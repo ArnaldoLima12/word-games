@@ -15,7 +15,7 @@ export default function ListGame({ games }) {
                     <img src={game.capa} alt={game.titulo} className="w-3/4"/>
                 </div>
 
-                <div className="py-2 px-6">
+                <div className="py-1 px-6 h-[125px]">
                     <div className="flex items-center justify-between mb-2">
                     <h5 className="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
                        {game.titulo}
