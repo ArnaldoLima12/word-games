@@ -5,7 +5,7 @@ export default function ListGame({ games }) {
 
     return (
        
-        <main className="flex gap-2 flex-grow p-3 flex-wrap border border-white justify-center">
+        <main className="flex gap-2 flex-grow p-3 flex-wrap justify-center">
             {games ? (games.map( game => (
               <div key={game.id} className="relative h-fit flex max-w-[22rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg ">
                 

@@ -28,7 +28,7 @@ export default async function Home() {
   }
 
   const data = await loadGame();
-  console.log(data);
+  
 
   return (
     <Container>
