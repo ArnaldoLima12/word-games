@@ -2,8 +2,10 @@ import Container from '@/components/Container';
 import Header from '@/components/Header';
 import ListGame from '@/components/ListGame';
 
-export default async function Home() {
-  
+export const fetchCache = 'force-no-store';
+
+export default async function Home() { 
+
   async function loadGame() {
 
     try {
