@@ -18,12 +18,12 @@ export default async function Home({ searchParams }) {
       let res;
 
       if (item) {
-        res = await fetch(`http://localhost:3000/api/list/all?page=${page}&limit=${limit}&item=${item}`, {
+        res = await fetch(`https://platinum-games.vercel.app/api/list/all?page=${page}&limit=${limit}&item=${item}`, {
           method: 'GET',
           headers: { "Content-Type": "application/json" }
         });
       } else {
-        res = await fetch(`http://localhost:3000/api/list/all?page=${page}&limit=${limit}`, {
+        res = await fetch(`https://platinum-games.vercel.app/api/list/all?page=${page}&limit=${limit}`, {
           method: 'GET',
           headers: { "Content-Type": "application/json" }
         });
