@@ -8,7 +8,7 @@ export default function ListGame({ games }) {
        
         <main className="flex gap-2 flex-grow p-3 flex-wrap justify-center">
             {games && games.length > 0 ? (games.map( game => (
-              <div key={game.id} className="relative h-fit flex max-w-[22rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg ">
+              <div key={game.id} className="relative h-fit flex w-1/4 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg ">
                 
                 <div className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40 flex justify-center">
                     <img src={game.capa} alt={game.titulo} className="w-3/4"/>

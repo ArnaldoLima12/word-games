@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Pagination({ page, totalPages, limit, items }) {
+export default function Pagination({ page, totalPages, limit, items, seach}) {
   
   const startItem = (page - 1) * limit + 1;
   const endItem = Math.min(page * limit, items);
@@ -38,13 +38,13 @@ export default function Pagination({ page, totalPages, limit, items }) {
       
       <div className="flex flex-1 justify-between sm:hidden">
       
-        <Link href={`/?page=${page - 1 == 0 ? 1 : page - 1}`} passHref>
+        <Link href={seach ? `/?page=${page - 1 == 0 ? 1 : page - 1}&&item=${seach}` : `/?page=${page - 1 == 0 ? 1 : page - 1}`} passHref>
             <p className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 no-underline">
               Anterior
             </p>
         </Link>
 
-        <Link href={`/?page=${page + 1 > totalPages ? totalPages : page + 1}`} passHref>
+        <Link href={seach ? `/?page=${page + 1 > totalPages ? totalPages : page + 1}&&item=${seach}` : `/?page=${page + 1 > totalPages ? totalPages : page + 1}`} passHref>
             <p className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 no-underline">
               Proxima
             </p>
@@ -60,7 +60,7 @@ export default function Pagination({ page, totalPages, limit, items }) {
         <div>
           <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
             
-            <Link href={`/?page=${page - 1 == 0 ? 1 : page - 1}`}>
+            <Link href={seach ? `/?page=${page - 1 == 0 ? 1 : page - 1}&&item=${seach}` : `/?page=${page - 1 == 0 ? 1 : page - 1}`} passHref>
               <p className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
                 <span className="sr-only">Previous</span>
                 <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -75,7 +75,7 @@ export default function Pagination({ page, totalPages, limit, items }) {
                 {pageNumber === '...' ? (
                   <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">...</span>
                 ) : (
-                  <Link href={`/?page=${pageNumber}`} passHref>
+                  <Link href={seach ? `/?page=${pageNumber}&&item=${seach}` : `/?page=${pageNumber}`} passHref>
                     <p className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${isCurrentPage(pageNumber) ? 'text-indigo-600' : 'text-gray-900'} ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}>
                       {pageNumber}
                     </p>
@@ -85,7 +85,7 @@ export default function Pagination({ page, totalPages, limit, items }) {
             ))}
           
           
-           <Link href={`/?page=${page + 1 > totalPages ? totalPages : page + 1 }`}>
+           <Link href={seach ? `/?page=${page + 1 > totalPages ? totalPages : page + 1}&&item=${seach}` : `/?page=${page + 1 > totalPages ? totalPages : page + 1}`} passHref>
             <p className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
                 <span className="sr-only">Next</span>
                 <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
