@@ -9,7 +9,7 @@ export default async function Categorias()
 
         try
         {
-            const res = await fetch(`${process.env.BASE_URL}/api/list/categories`, {
+            let res = await fetch(`${process.env.BASE_URL}/api/list/categories`, {
                 method: 'GET',
                 headers: { "Content-Type": "application/json" }
             });
@@ -31,8 +31,15 @@ export default async function Categorias()
     }
 
     let data = await loadCategories();
-    let categorias = data.categorias;
-    console.log(data);
+    let categorias;
+    if(data)
+    {   
+        categorias = data.categorias;
+    }
+    else
+    {
+        categorias = null;
+    }
 
     return(
 
