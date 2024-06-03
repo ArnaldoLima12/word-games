@@ -11,9 +11,9 @@ async function listCategories()
         return NextResponse.json({categorias: result.rows}, {status: 200});
         
     }
-    catch(erro)
+    catch(error)
     {
-        return NextResponse.json({erro: erro}, {status: 500});
+        return NextResponse.json({erro: error.message}, {status: 400});
     }
 }
 
