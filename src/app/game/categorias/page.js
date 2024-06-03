@@ -31,7 +31,9 @@ export default async function Categorias()
     }
 
     let data = await loadCategories();
+    console.log(data);
     let categorias = data.categorias;
+    console.log(categorias)
 
     return(
 
