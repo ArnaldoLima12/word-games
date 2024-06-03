@@ -32,13 +32,14 @@ export default async function Categorias()
 
     let data = await loadCategories();
     let categorias = data.categorias;
+    console.log(data);
 
     return(
 
         <Container>
             <Header auth={false}/>
             <main className="flex gap-2 flex-grow p-3 flex-wrap justify-center max-w-5xl m-auto">
-                {categorias.map(categoria => (<Link className="text-white no-underline" href={`/game/categorias/${categoria.categoria}`} key={categoria.categoria}>{categoria.categoria}</Link>))}
+                {categorias ? (categorias.map(categoria => (<Link className="text-white no-underline" href={`/game/categorias/${categoria.categoria}`} key={categoria.categoria}>{categoria.categoria}</Link>))) : (<p>Sem categorias</p>)}
             </main>
         </Container>
     )
