@@ -16,7 +16,7 @@ export default async function Categorias()
 
             if(!res.ok) {
 
-                console.log('Failed to fetch data', res.erro);
+                console.log('Failed to fetch data');
                 return null;
             }
 
