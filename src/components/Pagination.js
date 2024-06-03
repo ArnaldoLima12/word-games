@@ -2,8 +2,13 @@ import Link from "next/link";
 
 export default function Pagination({ page, totalPages, limit, items, seach}) {
   
-  const startItem = (page - 1) * limit + 1;
+  let startItem = (page - 1) * limit + 1;
   const endItem = Math.min(page * limit, items);
+
+  if(endItem === 0)
+  {
+    startItem = 0;
+  }
 
   const generatePages = (page, totalPages) => {
     const current = Math.min(page, totalPages);

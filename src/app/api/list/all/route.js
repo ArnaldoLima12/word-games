@@ -9,8 +9,7 @@ export async function listAll(request) {
         let limit = parseInt(searchParams.get('limit') || '9', 9);
         if (limit < 1) limit = 9;
         const offset = (page - 1) * limit;
-        console.log(offset);
-
+        
         let item = searchParams.get('item');
 
 

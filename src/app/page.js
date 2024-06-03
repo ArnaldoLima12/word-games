@@ -13,20 +13,26 @@ export default async function Home({ searchParams }) {
   const item = searchParams?.item || null;
 
   async function loadGame(page, limit, item) {
+    
     try {
 
       let res;
 
       if (item) {
+
         res = await fetch(`https://platinum-games.vercel.app/api/list/all?page=${page}&limit=${limit}&item=${item}`, {
           method: 'GET',
           headers: { "Content-Type": "application/json" }
         });
-      } else {
+
+      } 
+      else {
+
         res = await fetch(`https://platinum-games.vercel.app/api/list/all?page=${page}&limit=${limit}`, {
           method: 'GET',
           headers: { "Content-Type": "application/json" }
         });
+
       }
 
       if (!res.ok) {
@@ -37,7 +43,9 @@ export default async function Home({ searchParams }) {
       const result = await res.json();
       return result;
 
-    } catch (error) {
+    } 
+    catch (error) 
+    {
       console.error('Error fetching data:', error);
       return null;
     }

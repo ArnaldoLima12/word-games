@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { FiAlignJustify } from 'react-icons/fi';
@@ -34,6 +35,13 @@ function Navigation() {
               <Button type="submit">Search</Button>
             </div>
           </form>
+
+          <div className='mt-2'>
+            <ul className='m-0 p-0 flex flex-col gap-2'>
+              <li className='text-center flex justify-center'><Link className=' hover:bg-blue-700 w-full bg-blue-600 rounded-sm no-underline text-white p-2' href={'/game/categorias'}>Categorias</Link></li>
+              <li className='text-center flex justify-center'><Link className='hover:bg-blue-700 w-full bg-blue-600 rounded-sm no-underline text-white p-2' href={'/ferramentas'}>Ferramentas</Link></li>
+            </ul>
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </>
