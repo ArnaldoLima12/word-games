@@ -17,23 +17,51 @@ export default async function Game({ params }) {
 
   const authorization = await exchangeCodeForAccessToken(accessCode);
 
+  const splitIso = (iso) => {
+    
+    if(iso.includes('-'))
+    {
+        const [part1, part2] = iso.split('-');
+        return [part1, part2];
+    }
+    else
+    {
+      return iso;
+    }
+  } 
+
   const getgame = async iso => {
+
       const gameRequest = fetch(`${process.env.BASE_URL}/api/list/item`, {
         method: 'post',
         body: JSON.stringify(iso),
         headers: { "Content-Type": "application/json" }
       });
 
-      const trophiesRequest = getTitleTrophies(authorization, params.iso, 'all', { npServiceName: 'trophy' });
+      const split = splitIso(iso);
 
-      const [gameResponse, trophiesResponse] = await Promise.all([gameRequest, trophiesRequest]);
+      if(Array.isArray(split))
+      {
+          const trophiesRequest1 = getTitleTrophies(authorization, split[0], 'all', { npServiceName: 'trophy' });
+          const trophiesRequest2 = getTitleTrophies(authorization, split[1], 'all', { npServiceName: 'trophy' });
+          const [gameResponse, trophiesResponse1, trophiesResponse2] = await Promise.all([gameRequest, trophiesRequest1, trophiesRequest2]);
+          const gameData = await gameResponse.json();
+          return { gameData, trophiesData: [...trophiesResponse1.trophies, ...trophiesResponse2.trophies] };
 
-      const gameData = await gameResponse.json();
-      return { gameData, trophiesData: trophiesResponse };
+      }
+      else
+      {
+          const trophiesRequest = getTitleTrophies(authorization, iso, 'all', { npServiceName: 'trophy' });
+          const [gameResponse, trophiesResponse] = await Promise.all([gameRequest, trophiesRequest]);
+          const gameData = await gameResponse.json();
+          return { gameData, trophiesData: trophiesResponse.trophies};
+      }
   };
 
+
+
   let { gameData, trophiesData } = await getgame(params.iso);
-  let trophies = trophiesData.trophies
+  let trophies = trophiesData;
   let jogo = gameData.games;
 
   return (
