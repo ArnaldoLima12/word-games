@@ -33,7 +33,7 @@ async function loadGamesCategories(req)
     }
     catch(error)
     {
-        return NextResponse.json({erro: error}, {status: 500})
+        return NextResponse.json({erro: error}, {status: 400})
     }
 }
 

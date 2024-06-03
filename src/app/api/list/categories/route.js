@@ -17,4 +17,4 @@ async function listCategories()
     }
 }
 
-export {listCategories as GET}
+export { listCategories as GET }

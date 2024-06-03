@@ -14,13 +14,12 @@ export default async function Categorias()
                 headers: { "Content-Type": "application/json" }
             });
 
-            if(!res.ok) {
+            // if(!res.ok) {
+            //     console.log('Failed to fetch data');
+            //     return null;
+            // }
 
-                console.log('Failed to fetch data');
-                return null;
-            }
-
-            const result = await res.json();
+            let result = await res.json();
             return result;
         }
         catch(error)
@@ -32,6 +31,7 @@ export default async function Categorias()
 
     let data = await loadCategories();
     let categorias;
+
     if(data)
     {   
         categorias = data.categorias;
