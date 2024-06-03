@@ -16,7 +16,7 @@ export default async function Categorias()
 
             if(!res.ok) {
 
-                console.log('Failed to fetch data');
+                console.log('Failed to fetch data', res.erro);
                 return null;
             }
 
@@ -31,9 +31,7 @@ export default async function Categorias()
     }
 
     let data = await loadCategories();
-    console.log(data);
     let categorias = data.categorias;
-    console.log(categorias)
 
     return(
 
