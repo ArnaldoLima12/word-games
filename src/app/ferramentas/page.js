@@ -2,6 +2,8 @@ import Container from "@/components/Container";
 import Header from "@/components/Header";
 import Link from "next/link";
 
+export const fetchCache = 'force-no-store';
+
 export default function Ferramentas()
 {
     return(
