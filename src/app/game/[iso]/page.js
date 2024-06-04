@@ -79,7 +79,7 @@ export default async function Game({ params }) {
                   <LuGamepad fontSize={20} color='green'/> Platafoma: {gm.plataforma}
                 </p>
                 <p className='m-0 flex items-center gap-1'>
-                  <TbCategory fontSize={20} color='green'/> Categoria: {gm.categoria}
+                  <TbCategory fontSize={20} color='green'/> Categoria: {gm.nome}
                 </p>
                 <p className='m-0 flex items-center gap-1'>
                   <MdFileDownload fontSize={20} color='green'/> Tamanho: {gm.tamanho}GB

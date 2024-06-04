@@ -4,7 +4,19 @@ import Header from "@/components/Header";
 import ProtectedRouter from "@/components/ProtectedRouter";
 
 
-export default function Page() {
+export default async function Page() {
+
+    const loadCategories = async () => {
+
+        let res = await fetch(`${process.env.BASE_URL}/api/list/categories`, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" }
+        });
+
+        return await res.json();
+   }
+
+   let categorias = await loadCategories();
 
     return (
         <ProtectedRouter>
@@ -21,7 +33,7 @@ export default function Page() {
                         </div>
 
                         <div className="p-6 space-y-6">
-                           <FormNewGame></FormNewGame>
+                           <FormNewGame categorias={categorias}></FormNewGame>
                         </div>
                       
                     </div>

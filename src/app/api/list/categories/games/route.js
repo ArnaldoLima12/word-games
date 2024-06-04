@@ -14,10 +14,10 @@ async function loadGamesCategories(req)
     
     try
     {
-        let query = 'SELECT * FROM games WHERE categoria = $1 LIMIT $2 OFFSET $3';
+        let query = 'SELECT * FROM games WHERE categ = $1 LIMIT $2 OFFSET $3';
         let result = await connect.query(query, [categoria, limit, offset]);
 
-        const countQuery = `SELECT COUNT(*) FROM games WHERE categoria = $1`;
+        const countQuery = `SELECT COUNT(*) FROM games WHERE categ = $1`;
         const countResult = await connect.query(countQuery, [categoria]);
         let totalGames = parseInt(countResult.rows[0].count, 10);
         const totalPages = Math.ceil(totalGames / limit);

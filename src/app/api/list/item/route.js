@@ -6,7 +6,7 @@ async function listItem(req) {
 
         let iso = await req.json();
 
-        const query = `SELECT * FROM games WHERE iso = $1`;
+        const query = `SELECT * FROM games INNER JOIN categorias ON categorias.id = games.categ WHERE iso = $1`;
         const result = await connect.query(query, [iso]);
 
         return NextResponse.json({

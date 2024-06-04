@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 
-export default function FormNewGame() {   
+export default function FormNewGame({categorias}) {   
 
     const [resultado, setResultado] = useState(null);
     const formRef = useRef(null);
@@ -70,7 +70,13 @@ export default function FormNewGame() {
 
                 <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="category" className="text-sm font-medium text-gray-900 block mb-2">Categoria</label>
-                    <input type="text" name="categoria" id="category" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="RPG" required />
+                    <select name="categoria" id="category" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                        <option defaultValue={''}></option>
+                        {categorias.categorias.map( categoria => (
+                            <option key={categoria.id} defaultValue={categoria.id}>{categoria.nome}</option>
+                        ))}
+                    </select>
+                   
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">

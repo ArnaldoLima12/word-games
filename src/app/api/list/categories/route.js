@@ -5,8 +5,9 @@ async function listCategories()
 {
     try
     {
-        let query = 'SELECT categoria FROM games';
+        let query = 'SELECT DISTINCT id, nome FROM categorias';
         let result = await connect.query(query);
+        
 
         return NextResponse.json({categorias: result.rows}, {status: 200});
         
